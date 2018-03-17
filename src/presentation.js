@@ -28,11 +28,13 @@ import {
   GoogleControl,
   GoogleVariant,
   ExampleBooking,
+  AbTestCode,
+  IssuesWithApproach,
+  ImplementAb,
+  NowWhat,
+  UsingAbVariant,
+  AbVariantImpl,
 } from './slides/AbTests';
-import defaultTheme from './theme';
-
-// Import theme
-import createTheme from 'spectacle/lib/themes/default';
 
 // Require CSS
 import('normalize.css');
@@ -60,6 +62,12 @@ export default class Presentation extends React.Component {
         {ExampleBooking()}
         {GoogleControl()}
         {GoogleVariant()}
+        {AbTestCode()}
+        {IssuesWithApproach()}
+        {ImplementAb()}
+        {AbVariantImpl()}
+        {UsingAbVariant()}
+        {NowWhat()}
       </SlideDeck>
     );
   }

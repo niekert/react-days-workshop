@@ -1,15 +1,38 @@
 import React from 'react';
 import { Deck } from 'spectacle';
-import createTheme from 'spectacle/lib/themes/default';
-import defaultTheme from './theme';
+import AbVariant from './AbVariant';
+import createTheme from './themes/createTheme';
+import defaultTheme from './themes/defaultTheme';
+import lightThemeTemplate from './themes/lightTheme';
 
-const theme = createTheme(defaultTheme.colors, defaultTheme.fontFamily);
+const darkTheme = createTheme(defaultTheme.colors, defaultTheme.fontFamily);
+const lightTheme = createTheme(
+  lightThemeTemplate.colors,
+  lightThemeTemplate.fontFamily,
+);
+
+const variants = ['darkControl', 'light'];
+const themeMap = {
+  darkControl: darkTheme,
+  light: lightTheme,
+};
 
 function SlideDeck({ children }) {
   return (
-    <Deck contentWidth={1300} theme={theme} bgColor="primary">
-      {children}
-    </Deck>
+    <AbVariant testName="themeLightDark" variants={variants}>
+      {variant => {
+        return (
+          <Deck
+            contentWidth={1300}
+            controlColor="primaryText"
+            theme={themeMap[variant]}
+            bgColor="primary"
+          >
+            {children}
+          </Deck>
+        );
+      }}
+    </AbVariant>
   );
 }
 

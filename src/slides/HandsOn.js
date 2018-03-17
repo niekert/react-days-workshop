@@ -86,8 +86,6 @@ export function WebPowers() {
   );
 }
 
-// export const PackageJson = () => imageSlide({ src: packageJsonSrc });
-
 export function PackageJson() {
   return (
     <CodeSlide
@@ -99,31 +97,31 @@ export function PackageJson() {
       }}
       // eslint-disable-next-line
       code={`
-      {
-        "name": "react-days-workshop",
-        "version": "0.1.0",
-        "private": true,
-        "dependencies": {
-          "react": "^16.2.0",
-          "react-dom": "^16.2.0",
-          "spectacle": "4.1.0",
-          "spectacle-code-slide": "^0.5.2",
-          "spectacle-scripts": "2.0.0",
-          "spectacle-terminal": "^0.5.0",
-          "styled-components": "^3.2.2"
-        },
-        "devDependencies": {
-          "raw-loader": "^0.5.1",
-          "surge": "1.0.0"
-        },
-        "scripts": {
-          "start": "react-scripts start",
-          "build": "react-scripts build",
-          "deploy": "yarn build && surge ./build -d react-days-workshop.surge.sh",
-          "test": "react-scripts test --env=jsdom",
-          "eject": "react-scripts eject"
-        },
-      }      
+{
+  "name": "react-days-workshop",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "spectacle": "4.1.0",
+    "spectacle-code-slide": "^0.5.2",
+    "spectacle-scripts": "2.0.0",
+    "spectacle-terminal": "^0.5.0",
+    "styled-components": "^3.2.2"
+  },
+  "devDependencies": {
+    "raw-loader": "^0.5.1",
+    "surge": "1.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "deploy": "yarn build && surge ./build -d react-days-workshop.surge.sh",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+}      
       `}
       ranges={[
         { loc: [2, 5] },
