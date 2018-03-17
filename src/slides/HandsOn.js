@@ -54,7 +54,7 @@ export function Agenda() {
           <ListItem>A quick dive into some data</ListItem>
         </Appear>
         <Appear>
-          <ListItem>Using AB Tests</ListItem>
+          <ListItem>Implementing an AB test</ListItem>
         </Appear>
         <Appear>
           <ListItem>Tracking a user's behavior</ListItem>
