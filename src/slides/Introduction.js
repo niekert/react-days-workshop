@@ -5,6 +5,7 @@ import yourBossSrc from 'img/yourboss.png';
 import holdupSrc from 'img/holdup.jpeg';
 import { Row, Column } from 'style/Flex';
 import { List, ListItem } from 'style/List';
+import { imageSlide, ListSlide } from './Helpers';
 import {
   Slide,
   SlideSet,
@@ -17,8 +18,8 @@ import {
 } from 'spectacle';
 import styled from 'styled-components';
 
-const ListWrapper = styled.div`
-  margin-left: 26px;
+const Center = styled.div`
+  align-self: center;
 `;
 
 export function Welcome() {
@@ -38,16 +39,14 @@ export function AboutMe() {
   return (
     <Slide transition={['slide']} maxWidth={1900}>
       <Heading lineHeight={2}>🙋🏻‍♂️ I'm Niek</Heading>
-      <Row>
-        <ListWrapper>
-          <List start={1}>
-            <ListItem>🇳🇱</ListItem>
-            <ListItem>Frontend Engineer at MessageBird</ListItem>
-            <ListItem>https://github.com/niekert</ListItem>
-            <ListItem>I like React 🤡</ListItem>
-          </List>
-        </ListWrapper>
-      </Row>
+      <Center>
+        <List start={1}>
+          <ListItem>🇳🇱</ListItem>
+          <ListItem>Frontend Engineer at MessageBird</ListItem>
+          <ListItem>https://github.com/niekert</ListItem>
+          <ListItem>I like React to build things in React</ListItem>
+        </List>
+      </Center>
     </Slide>
   );
 }
@@ -83,23 +82,18 @@ export function HowDoWeBuild() {
 }
 
 export function IdeaToProduct() {
-  return (
-    <Slide>
-      <Image src={yourBossSrc} width={700} />
-    </Slide>
-  );
+  return imageSlide({ src: yourBossSrc });
+}
+
+export function HoldUp() {
+  return imageSlide({ src: holdupSrc, transition: ['none'] });
 }
 
 export function DevsWorry() {
   return (
     <Slide transition={['fade']} maxHeight="100%">
-      <Row>
-        <Image src={holdupSrc} />
-      </Row>
       <List>
-        <Appear>
-          <ListItem>Where do we get the data from</ListItem>
-        </Appear>
+        <ListItem>We don't have an API to do that</ListItem>
         <Appear>
           <ListItem>This will not play nicely with feature X...</ListItem>
         </Appear>
@@ -110,7 +104,10 @@ export function DevsWorry() {
           <ListItem>How do we build this component?</ListItem>
         </Appear>
         <Appear>
-          <ListItem>Is this even a good idea?</ListItem>
+          <ListItem>This will never work on IE 😑</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Is this feature even a good idea?</ListItem>
         </Appear>
       </List>
     </Slide>
@@ -119,13 +116,13 @@ export function DevsWorry() {
 
 export function WillThisWork() {
   return (
-    <Slide transition={['fade']}>
+    <Slide transition={['zoom']}>
       <Heading size={2} textColor="primaryText" margin="0 0 20px 0">
-        Is this even a good idea?
+        Is this feature even a good idea?
       </Heading>
       <Appear>
         <Text size={2} textColor="primaryText">
-          Nobody knows (until it's actually in use)
+          You won't know until it's actually in use
         </Text>
       </Appear>
     </Slide>
@@ -134,17 +131,36 @@ export function WillThisWork() {
 
 export function HowToDeal() {
   return (
-    <Slide transition={['slide']}>
-      <Heading textAlign="left" size={4} textColor="primaryText">
-        Dealing with unknowns
-      </Heading>
-      <List>
-        <ListItem>Try to found out what works</ListItem>
-        <ListItem>Use data to get to know your users</ListItem>
+    <Slide transition={['fade']}>
+      <ListSlide title="How do we find out?">
         <Appear>
-          <ListItem>Build, ship, check, repeat</ListItem>
+          <ListItem>Build something that works first</ListItem>
         </Appear>
-      </List>
+        <Appear>
+          <ListItem>
+            Ship as an MLP (Minimal Lovable Product) to a % of users
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Check how users respond to this version</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Repeat this process by using your learnings</ListItem>
+        </Appear>
+      </ListSlide>
+    </Slide>
+  );
+}
+
+export function BuildShipCheckRepeat() {
+  return (
+    <Slide transition={['fade']}>
+      <ListSlide title="How do we find out?">
+        <ListItem>Build</ListItem>
+        <ListItem>Ship</ListItem>
+        <ListItem>Check</ListItem>
+        <ListItem>Repeat</ListItem>
+      </ListSlide>
     </Slide>
   );
 }

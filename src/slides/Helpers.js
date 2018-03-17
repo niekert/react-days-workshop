@@ -9,9 +9,9 @@ const StyledList = styled(List)`
   }
 `;
 
-export function imageSlide({ src, width, height }) {
+export function imageSlide({ src, transition, width, height }) {
   return (
-    <Slide>
+    <Slide transition={transition}>
       <Layout fit>
         <Image src={src} width={width} height={height} />
       </Layout>

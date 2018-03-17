@@ -22,12 +22,25 @@ import {
   Intro,
   HowDoWeBuild,
   IdeaToProduct,
+  HoldUp,
   WillThisWork,
   HowToDeal,
+  BuildShipCheckRepeat,
   DevsWorry,
 } from './slides/Introduction';
-import { LetsStart, Agenda, PackageJson, WebPowers } from './slides/HandsOn';
-import { AbTestIntro, AbTestExamples } from './slides/AbTests';
+import {
+  LetsStart,
+  Agenda,
+  PackageJson,
+  WebPowers,
+  Surge,
+} from './slides/HandsOn';
+import {
+  AbTestIntro,
+  GoogleControl,
+  GoogleVariant,
+  ExampleBooking,
+} from './slides/AbTests';
 import defaultTheme from './theme';
 
 // Import theme
@@ -46,6 +59,7 @@ export default class Presentation extends React.Component {
       <ThemeProvider theme={defaultTheme}>
         <Deck
           transition={['slide']}
+          contentWidth={1300}
           transitionDuration={500}
           bgColor="primary"
           theme={theme}
@@ -55,15 +69,20 @@ export default class Presentation extends React.Component {
           {Intro()}
           {HowDoWeBuild()}
           {IdeaToProduct()}
+          {HoldUp()}
           {DevsWorry()}
           {WillThisWork()}
           {HowToDeal()}
-          {LetsStart()}
+          {BuildShipCheckRepeat()}
           {Agenda()}
+          {LetsStart()}
           {WebPowers()}
           {PackageJson()}
+          {Surge()}
           {AbTestIntro()}
-          {AbTestExamples()}
+          {ExampleBooking()}
+          {GoogleControl()}
+          {GoogleVariant()}
         </Deck>
       </ThemeProvider>
     );
