@@ -1,0 +1,23 @@
+{
+  "name": "react-days-workshop",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "16.2",
+    "react-dom": "16.2",
+    "spectacle": "4.1.0",
+    "spectacle-code-slide": "^0.5.2",
+    "spectacle-scripts": "2.0.0",
+    "spectacle-terminal": "^0.5.0",
+    "styled-components": "^3.2.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "raw-loader": "^0.5.1"
+  }
+}
