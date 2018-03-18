@@ -21,8 +21,19 @@ class SurpriseButton extends React.Component {
     isSurprised: false,
   };
 
+  hideSurprise = () => {
+    this.setState({ isSurprised: false });
+  };
+
   onClick = () => {
-    alert('surprised');
+    this.setState(
+      {
+        isSurprised: true,
+      },
+      () => {
+        this.timeout = setTimeout(this.hideSurprise, 2700);
+      },
+    );
   };
 
   render() {
@@ -30,8 +41,8 @@ class SurpriseButton extends React.Component {
 
     return (
       <React.Fragment>
-        <StyledButton onClick={this.onClick}>Surprise me!</StyledButton>;
-        {isSurprised && <SurpriseOverlay />}
+        <StyledButton onClick={this.onClick}>Surprise me!</StyledButton>
+        <SurpriseOverlay isVisible={isSurprised} />
       </React.Fragment>
     );
   }
