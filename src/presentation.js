@@ -24,6 +24,7 @@ import {
   Surge,
 } from './slides/HandsOn';
 import {
+  ChangingProducts,
   AbTestIntro,
   GoogleControl,
   GoogleVariant,
@@ -58,6 +59,7 @@ export default class Presentation extends React.Component {
         {WebPowers()}
         {PackageJson()}
         {Surge()}
+        {ChangingProducts()}
         {AbTestIntro()}
         {ExampleBooking()}
         {GoogleControl()}

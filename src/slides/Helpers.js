@@ -18,13 +18,6 @@ export function imageSlide({ src, transition, width, height }) {
     </Slide>
   );
 }
-export function TitleSlide({ children, ...props }) {
-  return (
-    <Slide {...props}>
-      <Heading>{children}</Heading>
-    </Slide>
-  );
-}
 
 export function ListSlide({ title, listItems, children, ...props }) {
   return (

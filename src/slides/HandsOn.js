@@ -28,9 +28,9 @@ export function LetsStart() {
         title="react-days-workshop"
         output={[
           <User>git clone git@github.com:niekert/react-days-workshop.git</User>,
-          `cd react-days-workshop
-yarn
-[1/4] 🔍  Resolving packages...
+          <User>cd react-days-workshop</User>,
+          <User>yarn</User>,
+          `[1/4] 🔍  Resolving packages...
 ✨  Done in 0.73s.
 `,
           <User>yarn start</User>,
@@ -48,13 +48,13 @@ export function Agenda() {
     <Slide>
       <ListSlide title="Agenda">
         <Appear>
-          <ListItem>Using the strenghts of the web</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>A quick dive into some data</ListItem>
+          <ListItem>Strengths of the (modern) web</ListItem>
         </Appear>
         <Appear>
           <ListItem>Implementing an AB test</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>A look into some data</ListItem>
         </Appear>
         <Appear>
           <ListItem>Tracking a user's behavior</ListItem>
@@ -67,8 +67,10 @@ export function Agenda() {
 export function WebPowers() {
   return (
     <Slide>
-      <ListSlide title="Using the strenghts of the web">
-        <ListItem>You don't have to install websites</ListItem>
+      <ListSlide title="Strengths of the web">
+        <Appear>
+          <ListItem>You don't have to install websites</ListItem>
+        </Appear>
         <Appear>
           <ListItem>Sharing tools and code has never been easier</ListItem>
         </Appear>
@@ -170,7 +172,7 @@ Welcome to Surge! (surge.sh)
          upload: [] 100% eta: 0.0s (13 files, 10720195 bytes)
             CDN: [====================] 100%
              IP: 45.55.110.124
-
+ p
    Success! - Published to react-days-workshop.surge.sh`,
         ]}
       />

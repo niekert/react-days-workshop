@@ -2,6 +2,8 @@ const colors = {
   primary: '#FFF',
   secondary: '#050A15',
   primaryText: '#050A15',
+  cta: '#F0CBCA',
+  ctaText: '#eee',
   // arrays can be used for scales of colors
   gray: ['#333', '#666', '#999', '#ccc', '#eee', '#f6f6f6'],
 };

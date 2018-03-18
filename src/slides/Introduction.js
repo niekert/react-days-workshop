@@ -44,7 +44,7 @@ export function AboutMe() {
           <ListItem>🇳🇱</ListItem>
           <ListItem>Frontend Engineer at MessageBird</ListItem>
           <ListItem>https://github.com/niekert</ListItem>
-          <ListItem>I like React to build things in React</ListItem>
+          <ListItem>I like buildig things in React</ListItem>
         </List>
       </Center>
     </Slide>
@@ -67,10 +67,12 @@ export function HowDoWeBuild() {
   return (
     <Slide>
       <Heading size={3} textColor="primaryText">
-        How do we build frontend products?
+        How do you build a product?
       </Heading>
       <Notes>
-        Ask audience what their process is
+        There is not one answer to this question. If I ask everyone in the
+        audience, people will respond differently but with similarities, (ask
+        audience) summarize:
         <ul>
           <li>Do you use sprints?</li>
           <li>What about a product manager?</li>
@@ -86,7 +88,7 @@ export function IdeaToProduct() {
 }
 
 export function HoldUp() {
-  return imageSlide({ src: holdupSrc, transition: ['none'] });
+  return imageSlide({ src: holdupSrc, transition: ['zoom'] });
 }
 
 export function DevsWorry() {
@@ -132,7 +134,7 @@ export function WillThisWork() {
 export function HowToDeal() {
   return (
     <Slide transition={['fade']}>
-      <ListSlide title="How do we find out?">
+      <ListSlide title="What's the quickest way to find out?">
         <Appear>
           <ListItem>Build something that works first</ListItem>
         </Appear>
@@ -142,7 +144,7 @@ export function HowToDeal() {
           </ListItem>
         </Appear>
         <Appear>
-          <ListItem>Check how users respond to this version</ListItem>
+          <ListItem>Check how users respond to this change</ListItem>
         </Appear>
         <Appear>
           <ListItem>Repeat this process by using your learnings</ListItem>
@@ -155,7 +157,7 @@ export function HowToDeal() {
 export function BuildShipCheckRepeat() {
   return (
     <Slide transition={['fade']}>
-      <ListSlide title="How do we find out?">
+      <ListSlide title="What's the quickest way to find out?">
         <ListItem>Build</ListItem>
         <ListItem>Ship</ListItem>
         <ListItem>Check</ListItem>

@@ -5,10 +5,24 @@ import googleNew from 'img/googlenew.png';
 import CodeSlide from 'spectacle-code-slide';
 import { Row, Column } from 'style/Flex';
 import { List, ListItem } from 'style/List';
-import { Slide, Heading, Appear, Notes } from 'spectacle';
-import Terminal from 'spectacle-terminal';
+import { Slide, Heading, Appear, Text, Notes } from 'spectacle';
 import styled from 'styled-components';
-import { ListSlide, imageSlide, TitleSlide } from './Helpers';
+import SurpriseButton from 'experiments/SurpriseButton';
+import { ListSlide, imageSlide } from './Helpers';
+
+export function ChangingProducts() {
+  return (
+    <Slide>
+      <Heading size={5} margin="0 0 30px 0">
+        We often change existing products instead of building something
+        completely new
+      </Heading>
+      <Appear>
+        <Text textColor="secondaryText">How to justify the change?</Text>
+      </Appear>
+    </Slide>
+  );
+}
 
 export function AbTestIntro() {
   return (
@@ -17,6 +31,7 @@ export function AbTestIntro() {
         <ListItem>Create different versions of your product</ListItem>
         <ListItem>Find out which version performs best</ListItem>
         <ListItem>Measure against a current version (Control)</ListItem>
+        <SurpriseButton />
       </ListSlide>
     </Slide>
   );
@@ -215,6 +230,7 @@ export function NowWhat() {
       <Notes>
         No, we don't really have anything specific we want to measure here, and
         the AB test spans the entire application, making it very broad.
+        <ul>What type of tracking is interesting?</ul>
       </Notes>
     </Slide>
   );
