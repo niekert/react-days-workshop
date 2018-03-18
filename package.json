@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "mixpanel-browser": "^2.18.0",
+    "react": "^16.3.0-alpha.2",
+    "react-dom": "^16.3.0-alpha.2",
     "spectacle": "4.1.0",
     "spectacle-code-slide": "^0.5.2",
     "spectacle-scripts": "2.0.0",

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { Image, Layout, Slide, Heading, List } from 'spectacle';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const StyledList = styled(List)`
   && {
@@ -9,11 +9,15 @@ const StyledList = styled(List)`
   }
 `;
 
+const StyledImage = styled(Image)`
+  object-fit: contain;
+`;
+
 export function imageSlide({ src, transition, width, height }) {
   return (
     <Slide transition={transition}>
       <Layout fit>
-        <Image src={src} width={width} height={height} />
+        <StyledImage src={src} width={width} height={height} />
       </Layout>
     </Slide>
   );

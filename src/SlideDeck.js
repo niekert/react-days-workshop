@@ -16,7 +16,7 @@ function SlideDeck({ children }) {
   return (
     <AbVariant testName="themeLightDark" variants={variants}>
       {assignedVariant => {
-        const theme = themeMap[assignedVariant];
+        const theme = themeMap[assignedVariant] || darkThemeBase;
         return (
           <ThemeProvider theme={theme}>
             <Deck
@@ -24,7 +24,6 @@ function SlideDeck({ children }) {
               controlColor="primaryText"
               transition={['slide']}
               theme={createTheme(theme.colors, theme.fontFamily)}
-              bgColor="primary"
             >
               {children}
             </Deck>

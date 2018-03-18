@@ -1,27 +1,15 @@
 import React from 'react';
-import packageJsonSrc from 'img/packagejson.png';
-import { Row, Column } from 'style/Flex';
-import { List, ListItem } from 'style/List';
+import { ListItem } from 'style/List';
 import { User } from 'style/Console';
 import CodeSlide from 'spectacle-code-slide';
-import {
-  Slide,
-  SlideSet,
-  Layout,
-  Image,
-  Heading,
-  Text,
-  Appear,
-  Notes,
-} from 'spectacle';
-import { imageSlide, ListSlide } from './Helpers';
+import { Slide, Heading, Appear, Notes } from 'spectacle';
+import { ListSlide } from './Helpers';
 import Terminal from 'spectacle-terminal';
-import styled from 'styled-components';
 
 export function LetsStart() {
   return (
     <Slide>
-      <Heading size={3} margin={'0 0 40px 0'} textColor="primaryText">
+      <Heading size={4} margin={'0 0 40px 0'} textColor="primaryText">
         Let's get started
       </Heading>
       <Terminal
@@ -54,10 +42,10 @@ export function Agenda() {
           <ListItem>Implementing an AB test</ListItem>
         </Appear>
         <Appear>
-          <ListItem>A look into some data</ListItem>
+          <ListItem>A look at some real data</ListItem>
         </Appear>
         <Appear>
-          <ListItem>Tracking a user's behavior</ListItem>
+          <ListItem>Tracking a user's behavior in your product</ListItem>
         </Appear>
       </ListSlide>
     </Slide>
@@ -159,11 +147,8 @@ You may serve it with a static server:
 Welcome to Surge! (surge.sh)
    Login (or create surge account) by entering email & password.
 
-          email: 
-`,
-          `
-          password: 
-          `,
+          email:
+          password:`,
           `
    Running as niekkruse70@gmail.com (Student)
 

@@ -1,8 +1,6 @@
 // Import React
 import React from 'react';
 
-// Import Spectacle Core tags
-import { Deck } from 'spectacle';
 import SlideDeck from './SlideDeck';
 import {
   Welcome,
@@ -36,13 +34,34 @@ import {
   UsingAbVariant,
   AbVariantImpl,
 } from './slides/AbTests';
+import {
+  IntroEventTracking,
+  SettingUpMixPanel,
+  InstallMixPanel,
+  EventUtils,
+  TrackingSurpriseButton,
+  TrackSurpriseImpl,
+  WhatDataWeWant,
+  HowWeIncludeSlideNumber,
+  UsingContextForAbTest,
+  SlideNumberContextImpl,
+  ReactDocsContext,
+  UsingProvider,
+  ImplementNewContext,
+  ConsumerAbVariant,
+  ButProblem,
+  HowDoWeAssign,
+  HocsToRescue,
+} from './slides/EventTracking';
+import 'prismjs/components/prism-jsx.min';
+import { Provider as AbContextProvider } from './context/AbTestContext';
 
 // Require CSS
 import('normalize.css');
 
-export default class Presentation extends React.Component {
-  render() {
-    return (
+export default function Presentation() {
+  return (
+    <AbContextProvider>
       <SlideDeck>
         {Welcome()}
         {AboutMe()}
@@ -50,7 +69,6 @@ export default class Presentation extends React.Component {
         {HowDoWeBuild()}
         {IdeaToProduct()}
         {HoldUp()}
-        {DevsWorry()}
         {WillThisWork()}
         {HowToDeal()}
         {BuildShipCheckRepeat()}
@@ -70,7 +88,24 @@ export default class Presentation extends React.Component {
         {AbVariantImpl()}
         {UsingAbVariant()}
         {NowWhat()}
+        {IntroEventTracking()}
+        {SettingUpMixPanel()}
+        {InstallMixPanel()}
+        {EventUtils()}
+        {TrackingSurpriseButton()}
+        {TrackSurpriseImpl()}
+        {WhatDataWeWant()}
+        {HowWeIncludeSlideNumber()}
+        {SlideNumberContextImpl()}
+        {ReactDocsContext()}
+        {UsingContextForAbTest()}
+        {ImplementNewContext()}
+        {UsingProvider()}
+        {ConsumerAbVariant()}
+        {ButProblem()}
+        {HowDoWeAssign()}
+        {HocsToRescue()}
       </SlideDeck>
-    );
-  }
+    </AbContextProvider>
+  );
 }

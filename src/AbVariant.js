@@ -1,19 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-function assignVariant(name, variants) {
-  const storedVariant = localStorage.getItem(`ab-test-${name}`);
-  if (storedVariant) {
-    return storedVariant;
-  }
-
-  // Get a random value from the array
-  const assignedVariant = variants[Math.floor(Math.random() * variants.length)];
-
-  localStorage.setItem(`ab-test-${name}`, assignedVariant);
-
-  return assignedVariant;
-}
+import { Consumer as AbContextConsumer } from './context/AbTestContext';
 
 class AbVariant extends React.Component {
   static propTypes = {
@@ -22,15 +9,16 @@ class AbVariant extends React.Component {
     children: PropTypes.func,
   };
 
-  constructor(props) {
-    super(props);
-
-    const { testName, variants } = props;
-    this.assignedVariant = assignVariant(testName, variants);
-  }
-
   render() {
-    return this.props.children(this.assignedVariant);
+    const { testName } = this.props;
+    return (
+      <AbContextConsumer>
+        {({ assignedVariants }) => {
+          const assignedVariant = assignedVariants[testName];
+          return this.props.children(assignedVariant);
+        }}
+      </AbContextConsumer>
+    );
   }
 }
 

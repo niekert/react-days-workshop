@@ -1,21 +1,9 @@
 import React from 'react';
-import niekSrc from 'img/niek.png';
-import uhhSrc from 'img/uhh.gif';
 import yourBossSrc from 'img/yourboss.png';
 import holdupSrc from 'img/holdup.jpeg';
-import { Row, Column } from 'style/Flex';
 import { List, ListItem } from 'style/List';
 import { imageSlide, ListSlide } from './Helpers';
-import {
-  Slide,
-  SlideSet,
-  Layout,
-  Image,
-  Heading,
-  Text,
-  Appear,
-  Notes,
-} from 'spectacle';
+import { Slide, Heading, Text, Appear, Notes } from 'spectacle';
 import styled from 'styled-components';
 
 const Center = styled.div`
@@ -38,10 +26,19 @@ export function Welcome() {
 export function AboutMe() {
   return (
     <Slide transition={['slide']} maxWidth={1900}>
-      <Heading lineHeight={2}>🙋🏻‍♂️ I'm Niek</Heading>
+      <Heading lineHeight={2}>
+        <span role="img" aria-label="waving">
+          🙋�
+        </span>{' '}
+        I'm Niek
+      </Heading>
       <Center>
         <List start={1}>
-          <ListItem>🇳🇱</ListItem>
+          <ListItem>
+            <span role="img" aria-label="nl-flag">
+              🇳🇱
+            </span>
+          </ListItem>
           <ListItem>Frontend Engineer at MessageBird</ListItem>
           <ListItem>https://github.com/niekert</ListItem>
           <ListItem>I like buildig things in React</ListItem>
@@ -84,7 +81,7 @@ export function HowDoWeBuild() {
 }
 
 export function IdeaToProduct() {
-  return imageSlide({ src: yourBossSrc });
+  return imageSlide({ src: yourBossSrc, width: '80%' });
 }
 
 export function HoldUp() {
@@ -106,7 +103,7 @@ export function DevsWorry() {
           <ListItem>How do we build this component?</ListItem>
         </Appear>
         <Appear>
-          <ListItem>This will never work on IE 😑</ListItem>
+          <ListItem>This will never work on IE...</ListItem>
         </Appear>
         <Appear>
           <ListItem>Is this feature even a good idea?</ListItem>
