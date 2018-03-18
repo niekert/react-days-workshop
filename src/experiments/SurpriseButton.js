@@ -1,6 +1,8 @@
 import React from 'react';
-import SurpriseOverlay from './SurpriseOverlay';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { trackEvent } from 'utils/events';
+import SurpriseOverlay from './SurpriseOverlay';
 
 const StyledButton = styled.button`
   position: fixed;
@@ -17,6 +19,12 @@ const StyledButton = styled.button`
 `;
 
 class SurpriseButton extends React.Component {
+  static contextTypes = {
+    store: PropTypes.shape({
+      getState: PropTypes.func,
+    }),
+  };
+
   state = {
     isSurprised: false,
   };
@@ -31,6 +39,7 @@ class SurpriseButton extends React.Component {
         isSurprised: true,
       },
       () => {
+        trackEvent('Surprise Button Clicked');
         this.timeout = setTimeout(this.hideSurprise, 2700);
       },
     );

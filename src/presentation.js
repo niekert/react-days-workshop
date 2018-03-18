@@ -36,6 +36,17 @@ import {
   UsingAbVariant,
   AbVariantImpl,
 } from './slides/AbTests';
+import {
+  IntroEventTracking,
+  SettingUpMixPanel,
+  InstallMixPanel,
+  EventUtils,
+  TrackingSurpriseButton,
+  TrackSurpriseImpl,
+  WhatDataWeWant,
+  HowWeIncludeSlideNumber,
+  UsingContextForAbTest,
+} from './slides/EventTracking';
 
 // Require CSS
 import('normalize.css');
@@ -70,6 +81,15 @@ export default class Presentation extends React.Component {
         {AbVariantImpl()}
         {UsingAbVariant()}
         {NowWhat()}
+        {IntroEventTracking()}
+        {SettingUpMixPanel()}
+        {InstallMixPanel()}
+        {EventUtils()}
+        {TrackingSurpriseButton()}
+        {TrackSurpriseImpl()}
+        {WhatDataWeWant()}
+        {HowWeIncludeSlideNumber()}
+        {UsingContextForAbTest()}
       </SlideDeck>
     );
   }

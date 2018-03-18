@@ -84,7 +84,7 @@ export function HowDoWeBuild() {
 }
 
 export function IdeaToProduct() {
-  return imageSlide({ src: yourBossSrc });
+  return imageSlide({ src: yourBossSrc, width: '80%' });
 }
 
 export function HoldUp() {
