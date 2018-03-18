@@ -7,6 +7,7 @@ import { Slide, Heading, Appear, Text, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';
 import { User } from 'style/Console';
+import { FlashyText } from 'style/Typography';
 
 export function IntroEventTracking() {
   return (
@@ -227,16 +228,213 @@ class SurpriseButton extends React.Component {
 }
 
 export function ReactDocsContext() {
-  return imageSlide({ src: reactDocsContextSrc });
+  return imageSlide({
+    src: reactDocsContextSrc,
+  });
 }
 
 export function UsingContextForAbTest() {
   return (
-    <Slide>
+    <Slide transition={['spin']}>
       <Heading size={3}>
-        Using the new Context API to get the AB test variants
+        Using the <FlashyText>new</FlashyText> Context API
       </Heading>
       <Notes>Intro for context API</Notes>
+    </Slide>
+  );
+}
+
+export function ImplementNewContext() {
+  return (
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+import React, { createContext } from 'react';
+import { getAssignedVariants, storeAssignedVariant } from 'utils/abTests';
+
+const AbContext = createContext();
+
+export class Provider extends React.Component {
+  state = {
+    assignedVariants: getAssignedVariants(),
+  };
+
+  assignVariant = (testName, variants) => {
+    const assignedVariant =
+      variants[Math.floor(Math.random() * variants.length)];
+
+    storeAssignedVariant(testName, assignedVariant);
+
+    this.setState({
+      [testName]: assignedVariant,
+    });
+  };
+
+  render() {
+    const { assignedVariants } = this.state;
+
+    return (
+      <AbContext.Provider
+        value={{ assignedVariants, assignVariant: this.assignVariant }}
+      >
+        {this.props.children}
+      </AbContext.Provider>
+    );
+  }
+}
+
+export const Consumer = AbContext.Consumer;
+
+
+
+
+`}
+      ranges={[
+        {
+          loc: [1, 2],
+          note: 'React expots a new "createContext" function',
+        },
+        {
+          loc: [4, 5],
+          note: 'Calling the createContext function returns a Context object',
+        },
+        {
+          loc: [6, 21],
+          note:
+            'A regular React component keeps the state of all the AB we have assigned',
+        },
+        {
+          loc: [7, 10],
+          note:
+            'getAssignedVariants() is a helper function to read everything stored in localStorage',
+        },
+        {
+          loc: [11, 21],
+          note: 'assignVariant() looks pretty similar to what we wrote before',
+        },
+        {
+          loc: [22, 33],
+          note: 'AbContext.Provider comes from createContext()',
+        },
+        {
+          loc: [27, 28],
+          note: 'Notice what we pass to the value prop',
+        },
+        {
+          loc: [29, 30],
+          note: 'Pass through any children',
+        },
+        {
+          loc: [35, 36],
+          note: 'Notice how we also export a Consumer',
+        },
+      ]}
+    />
+  );
+}
+
+export function UsingProvider() {
+  return (
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+//src/Presentation.js
+import { Provider as AbContextProvider } from './context/AbTestContext';
+
+export default function Presentation() {
+  return (
+    <AbContextProvider>
+      <SlideDeck>
+        {...}
+      </SlideDeck>
+    </AbContextProvider>
+  );
+}
+`}
+      ranges={[
+        {
+          loc: [1, 15],
+          note: 'We wrap the entire presentation in an AbContextProvider',
+        },
+        {
+          loc: [6, 11],
+          note: 'We wrap the entire presentation in an AbContextProvider',
+        },
+      ]}
+    />
+  );
+}
+
+export function ConsumerAbVariant() {
+  return (
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+// src/AbVariant.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Consumer as AbContextConsumer } from './context/AbTestContext';
+
+class AbVariant extends React.Component {
+  static propTypes = {
+    testName: PropTypes.string.isRequired,
+    variants: PropTypes.arrayOf(PropTypes.string).isRequired,
+    children: PropTypes.func,
+  };
+
+  render() {
+    const { testName } = this.props;
+    return (
+      <AbContextConsumer>
+        {({ assignedVariants }) => {
+          const assignedVariant = assignedVariants[testName];
+          return this.props.children(assignedVariant);
+        }}
+      </AbContextConsumer>
+    );
+  }
+}
+
+export default AbVariant;      
+`}
+      ranges={[
+        {
+          loc: [1, 31],
+        },
+        {
+          loc: [4, 5],
+          note: 'We will import a Consumer from the reat AbTestContext file',
+        },
+        {
+          loc: [7, 12],
+          note: 'The component propTypes remain the same!',
+        },
+        {
+          loc: [14, 24],
+        },
+        {
+          loc: [16, 22],
+          note: 'Again children are used as a render prop!',
+        },
+      ]}
+    />
+  );
+}
+
+export function ButProblem() {
+  return (
+    <Slide>
+      <Heading size={3}>But... There is a problem!</Heading>
+      <Notes>
+        ASK AUDIENCE WHAT TO DO
+        <ul>
+          <li>URL?</li>
+          <li>Let's look at React devtools</li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }

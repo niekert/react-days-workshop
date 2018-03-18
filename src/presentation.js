@@ -46,15 +46,20 @@ import {
   UsingContextForAbTest,
   SlideNumberContextImpl,
   ReactDocsContext,
+  UsingProvider,
+  ImplementNewContext,
+  ConsumerAbVariant,
+  ButProblem,
 } from './slides/EventTracking';
 import 'prismjs/components/prism-jsx.min';
+import { Provider as AbContextProvider } from './context/AbTestContext';
 
 // Require CSS
 import('normalize.css');
 
-export default class Presentation extends React.Component {
-  render() {
-    return (
+export default function Presentation() {
+  return (
+    <AbContextProvider>
       <SlideDeck>
         {Welcome()}
         {AboutMe()}
@@ -93,7 +98,11 @@ export default class Presentation extends React.Component {
         {SlideNumberContextImpl()}
         {ReactDocsContext()}
         {UsingContextForAbTest()}
+        {ImplementNewContext()}
+        {UsingProvider()}
+        {ConsumerAbVariant()}
+        {ButProblem()}
       </SlideDeck>
-    );
-  }
+    </AbContextProvider>
+  );
 }

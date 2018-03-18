@@ -24,7 +24,6 @@ function SlideDeck({ children }) {
               controlColor="primaryText"
               transition={['slide']}
               theme={createTheme(theme.colors, theme.fontFamily)}
-              bgColor="primary"
             >
               {children}
             </Deck>

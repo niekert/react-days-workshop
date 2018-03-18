@@ -9,7 +9,7 @@ import Terminal from 'spectacle-terminal';
 export function LetsStart() {
   return (
     <Slide>
-      <Heading size={3} margin={'0 0 40px 0'} textColor="primaryText">
+      <Heading size={4} margin={'0 0 40px 0'} textColor="primaryText">
         Let's get started
       </Heading>
       <Terminal
@@ -147,11 +147,8 @@ You may serve it with a static server:
 Welcome to Surge! (surge.sh)
    Login (or create surge account) by entering email & password.
 
-          email: 
-`,
-          `
-          password: 
-          `,
+          email:
+          password:`,
           `
    Running as niekkruse70@gmail.com (Student)
 
