@@ -3,7 +3,7 @@ import CodeSlide from 'spectacle-code-slide';
 import Terminal from 'spectacle-terminal';
 import { ListItem } from 'style/List';
 import reactDocsContextSrc from 'img/react_on_context.png';
-import { Slide, Heading, Appear, Text, Notes } from 'spectacle';
+import { Slide, Heading, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';
 import { User } from 'style/Console';
@@ -24,7 +24,12 @@ export function SettingUpMixPanel() {
         <ListItem>Mixpanel is one of many tools for product analysis</ListItem>
         <ListItem>Track user interactions as they happen realtime</ListItem>
         <ListItem>Include any context that is relevant for our data</ListItem>
-        <ListItem>Turn off your ad blockers! 😬</ListItem>
+        <ListItem>
+          Turn off your ad blockers!{' '}
+          <span role="img" aria-label="grimacing">
+            😬
+          </span>
+        </ListItem>
       </ListSlide>
     </Slide>
   );
