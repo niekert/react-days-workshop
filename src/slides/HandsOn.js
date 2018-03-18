@@ -1,22 +1,10 @@
 import React from 'react';
-import packageJsonSrc from 'img/packagejson.png';
-import { Row, Column } from 'style/Flex';
-import { List, ListItem } from 'style/List';
+import { ListItem } from 'style/List';
 import { User } from 'style/Console';
 import CodeSlide from 'spectacle-code-slide';
-import {
-  Slide,
-  SlideSet,
-  Layout,
-  Image,
-  Heading,
-  Text,
-  Appear,
-  Notes,
-} from 'spectacle';
-import { imageSlide, ListSlide } from './Helpers';
+import { Slide, Heading, Appear, Notes } from 'spectacle';
+import { ListSlide } from './Helpers';
 import Terminal from 'spectacle-terminal';
-import styled from 'styled-components';
 
 export function LetsStart() {
   return (

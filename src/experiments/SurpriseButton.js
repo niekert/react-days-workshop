@@ -29,6 +29,10 @@ class SurpriseButton extends React.Component {
     isSurprised: false,
   };
 
+  componentWillUnmount() {
+    clearTimeout(this.timeout);
+  }
+
   hideSurprise = () => {
     this.setState({ isSurprised: false });
   };
@@ -39,8 +43,13 @@ class SurpriseButton extends React.Component {
         isSurprised: true,
       },
       () => {
-        trackEvent('Surprise Button Clicked');
         this.timeout = setTimeout(this.hideSurprise, 2700);
+
+        const { store } = this.context;
+        const state = store.getState();
+        trackEvent('Surprise Button Clicked', {
+          slideNumber: state.route.slide,
+        });
       },
     );
   };

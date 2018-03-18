@@ -2,6 +2,7 @@ const colors = {
   primary: '#050A15',
   secondary: '#FFF',
   primaryText: '#fff',
+  tertiary: 'rgba(255, 255, 255, 0.5)',
   cta: '#FFFF00',
   ctaText: '#333',
   secondaryText: 'rgba(255, 255, 255, .7)',

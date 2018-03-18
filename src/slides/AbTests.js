@@ -3,10 +3,8 @@ import bookingAb from 'img/booking.jpg';
 import googleControl from 'img/googleold.png';
 import googleNew from 'img/googlenew.png';
 import CodeSlide from 'spectacle-code-slide';
-import { Row, Column } from 'style/Flex';
-import { List, ListItem } from 'style/List';
+import { ListItem } from 'style/List';
 import { Slide, Heading, Appear, Text, Notes } from 'spectacle';
-import styled from 'styled-components';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';
 
@@ -53,7 +51,7 @@ export function AbTestCode() {
   return (
     <CodeSlide
       className="codeSlide"
-      lang="js"
+      lang="jsx"
       // eslint-disable-next-line
       code={`
 function assignVariant(variants) {
@@ -85,7 +83,7 @@ export function AbTestComponents() {
   return (
     <CodeSlide
       className="codeSlide"
-      lang="js"
+      lang="jsx"
       // eslint-disable-next-line
       code={`
 function assignVariant(variants) {
@@ -140,7 +138,7 @@ export function AbVariantImpl() {
   return (
     <CodeSlide
       className="codeSlide"
-      lang="js"
+      lang="jsx"
       // eslint-disable-next-line
       code={`
 import React from 'react';
@@ -237,7 +235,7 @@ export function UsingAbVariant() {
   return (
     <CodeSlide
       className="codeSlide"
-      lang="js"
+      lang="jsx"
       // eslint-disable-next-line
       code={`
 // src/SlideDeck.js

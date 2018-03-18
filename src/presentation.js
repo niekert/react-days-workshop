@@ -1,8 +1,6 @@
 // Import React
 import React from 'react';
 
-// Import Spectacle Core tags
-import { Deck } from 'spectacle';
 import SlideDeck from './SlideDeck';
 import {
   Welcome,
@@ -46,7 +44,10 @@ import {
   WhatDataWeWant,
   HowWeIncludeSlideNumber,
   UsingContextForAbTest,
+  SlideNumberContextImpl,
+  ReactDocsContext,
 } from './slides/EventTracking';
+import 'prismjs/components/prism-jsx.min';
 
 // Require CSS
 import('normalize.css');
@@ -89,6 +90,8 @@ export default class Presentation extends React.Component {
         {TrackSurpriseImpl()}
         {WhatDataWeWant()}
         {HowWeIncludeSlideNumber()}
+        {SlideNumberContextImpl()}
+        {ReactDocsContext()}
         {UsingContextForAbTest()}
       </SlideDeck>
     );

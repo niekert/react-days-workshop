@@ -22,7 +22,7 @@ const Wrapper = styled.div`
 export default function SurpriseOverlay({ isVisible }) {
   return ReactDOM.createPortal(
     <Wrapper isVisible={isVisible}>
-      {isVisible && <img src={doggoSurpriseSrc} />}
+      {isVisible && <img src={doggoSurpriseSrc} alt="Surprise" />}
     </Wrapper>,
     document.getElementById('surprise-container'),
   );

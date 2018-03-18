@@ -2,9 +2,10 @@ import React from 'react';
 import CodeSlide from 'spectacle-code-slide';
 import Terminal from 'spectacle-terminal';
 import { ListItem } from 'style/List';
+import reactDocsContextSrc from 'img/react_on_context.png';
 import { Slide, Heading, Appear, Text, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
-import { ListSlide } from './Helpers';
+import { ListSlide, imageSlide } from './Helpers';
 import { User } from 'style/Console';
 
 export function IntroEventTracking() {
@@ -60,7 +61,7 @@ export function EventUtils() {
   return (
     <CodeSlide
       className="codeSlide"
-      lang="js"
+      lang="jsx"
       code={`
 // src/utils/events.js
 import mixpanel from 'mixpanel-browser';
@@ -92,7 +93,7 @@ export function TrackSurpriseImpl() {
   return (
     <CodeSlide
       className="codeSlide"
-      lang="js"
+      lang="jsx"
       code={`
 import { trackEvent } from 'utils/events';
 
@@ -156,6 +157,7 @@ export function HowWeIncludeSlideNumber() {
   return (
     <Slide>
       <Heading size={3}>How do we find the slide number?</Heading>
+      <SurpriseButton />
       <Notes>
         ASK AUDIENCE
         <ul>
@@ -167,13 +169,73 @@ export function HowWeIncludeSlideNumber() {
   );
 }
 
+export function SlideNumberContextImpl() {
+  return (
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+class SurpriseButton extends React.Component {
+  static contextTypes = {
+    store: PropTypes.shape({
+      getState: PropTypes.func,
+    }),
+  };
+
+  onClick = () => {
+    this.setState(
+      {
+        isSurprised: true,
+      },
+      () => {
+        this.timeout = setTimeout(this.hideSurprise, 2700);
+
+        const { store } = this.context;
+        const state = store.getState();
+        trackEvent('Surprise Button Clicked', {
+          slideNumber: state.route.slide,
+        });
+      },
+    );
+  };
+
+  render() {
+    const { isSurprised } = this.state;
+
+    return (
+      <React.Fragment>
+        <StyledButton onClick={this.onClick}>Surprise me!</StyledButton>
+        <SurpriseOverlay isVisible={isSurprised} />
+      </React.Fragment>
+    );
+  }
+}
+`}
+      ranges={[
+        {
+          loc: [1, 7],
+          note: 'contextTypes is pretty similar to declaring propTypes',
+        },
+        {
+          loc: [16, 21],
+          note:
+            'We read from the store, and include the slide number as the event payload',
+        },
+      ]}
+    />
+  );
+}
+
+export function ReactDocsContext() {
+  return imageSlide({ src: reactDocsContextSrc });
+}
+
 export function UsingContextForAbTest() {
   return (
     <Slide>
-      <Heading size={3}>Using Context to get the AB test variants</Heading>
-      <Appear>
-        <Text textColor="primaryText">With the new Context API</Text>
-      </Appear>
+      <Heading size={3}>
+        Using the new Context API to get the AB test variants
+      </Heading>
       <Notes>Intro for context API</Notes>
     </Slide>
   );
