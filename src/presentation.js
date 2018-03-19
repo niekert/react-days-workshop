@@ -12,7 +12,6 @@ import {
   WillThisWork,
   HowToDeal,
   BuildShipCheckRepeat,
-  DevsWorry,
 } from './slides/Introduction';
 import {
   LetsStart,
