@@ -443,3 +443,35 @@ export function ButProblem() {
     </Slide>
   );
 }
+
+export function HowDoWeAssign() {
+  return (
+    <Slide>
+      <Heading size={3}>
+        How do we <FlashyText>assign</FlashyText> users to a group?
+      </Heading>
+      <Notes>
+        ASK AUDIENCE WHAT TO DO
+        <ul>
+          <li>URL?</li>
+          <li>Let's look at React devtools</li>
+        </ul>
+      </Notes>
+    </Slide>
+  );
+}
+
+export function HocsToRescue() {
+  return (
+    <Slide>
+      <Heading size={3}>Higher Order Components to the rescue!</Heading>
+      <Notes>
+        ASK AUDIENCE WHAT TO DO
+        <ul>
+          <li>URL?</li>
+          <li>Let's look at React devtools</li>
+        </ul>
+      </Notes>
+    </Slide>
+  );
+}

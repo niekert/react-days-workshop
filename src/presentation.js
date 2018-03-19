@@ -50,6 +50,8 @@ import {
   ImplementNewContext,
   ConsumerAbVariant,
   ButProblem,
+  HowDoWeAssign,
+  HocsToRescue,
 } from './slides/EventTracking';
 import 'prismjs/components/prism-jsx.min';
 import { Provider as AbContextProvider } from './context/AbTestContext';
@@ -67,7 +69,6 @@ export default function Presentation() {
         {HowDoWeBuild()}
         {IdeaToProduct()}
         {HoldUp()}
-        {DevsWorry()}
         {WillThisWork()}
         {HowToDeal()}
         {BuildShipCheckRepeat()}
@@ -102,6 +103,8 @@ export default function Presentation() {
         {UsingProvider()}
         {ConsumerAbVariant()}
         {ButProblem()}
+        {HowDoWeAssign()}
+        {HocsToRescue()}
       </SlideDeck>
     </AbContextProvider>
   );
