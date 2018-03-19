@@ -4,6 +4,7 @@ import holdupSrc from 'img/holdup.jpeg';
 import { List, ListItem } from 'style/List';
 import { imageSlide, ListSlide } from './Helpers';
 import { Slide, Heading, Text, Appear, Notes } from 'spectacle';
+import { FlashyText } from 'style/Typography';
 import styled from 'styled-components';
 
 const Center = styled.div`
@@ -133,18 +134,25 @@ export function HowToDeal() {
     <Slide transition={['fade']}>
       <ListSlide title="What's the quickest way to find out?">
         <Appear>
-          <ListItem>Build something that works first</ListItem>
-        </Appear>
-        <Appear>
           <ListItem>
-            Ship as an MLP (Minimal Lovable Product) to a % of users
+            <FlashyText>Build</FlashyText> something that works first
           </ListItem>
         </Appear>
         <Appear>
-          <ListItem>Check how users respond to this change</ListItem>
+          <ListItem>
+            <FlashyText>Ship</FlashyText> as an MLP (Minimal Lovable Product) to
+            a % of users
+          </ListItem>
         </Appear>
         <Appear>
-          <ListItem>Repeat this process by using your learnings</ListItem>
+          <ListItem>
+            <FlashyText>Check</FlashyText> how users respond to this change
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>
+            <FlashyText>Repeat</FlashyText> this process by using your learnings
+          </ListItem>
         </Appear>
       </ListSlide>
     </Slide>
@@ -155,10 +163,18 @@ export function BuildShipCheckRepeat() {
   return (
     <Slide transition={['fade']}>
       <ListSlide title="What's the quickest way to find out?">
-        <ListItem>Build</ListItem>
-        <ListItem>Ship</ListItem>
-        <ListItem>Check</ListItem>
-        <ListItem>Repeat</ListItem>
+        <ListItem>
+          <FlashyText>Build</FlashyText>
+        </ListItem>
+        <ListItem>
+          <FlashyText>Ship</FlashyText>
+        </ListItem>
+        <ListItem>
+          <FlashyText>Check</FlashyText>
+        </ListItem>
+        <ListItem>
+          <FlashyText>Repeat</FlashyText>
+        </ListItem>
       </ListSlide>
     </Slide>
   );
