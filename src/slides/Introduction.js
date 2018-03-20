@@ -1,10 +1,10 @@
 import React from 'react';
 import yourBossSrc from 'img/yourboss.png';
 import holdupSrc from 'img/holdup.jpeg';
-import { List, ListItem } from 'style/List';
+import { List, ListItem } from './style/List';
 import { imageSlide, ListSlide } from './Helpers';
 import { Slide, Heading, Text, Appear, Notes } from 'spectacle';
-import { FlashyText } from 'style/Typography';
+import { FlashyText } from './style/Typography';
 import styled from 'styled-components';
 
 const Center = styled.div`

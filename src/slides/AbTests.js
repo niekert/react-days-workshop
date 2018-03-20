@@ -3,7 +3,7 @@ import bookingAb from 'img/booking.jpg';
 import googleControl from 'img/googleold.png';
 import googleNew from 'img/googlenew.png';
 import CodeSlide from 'spectacle-code-slide';
-import { ListItem } from 'style/List';
+import { ListItem } from './style/List';
 import { Slide, Heading, Appear, Text, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';

@@ -53,7 +53,12 @@ import {
   HocsToRescue,
   HocContextGithub,
   ConsumerHoc,
-  HowToUseHoc
+  HowToUseHoc,
+  UseHocAbVariant,
+  WhyDidWeDoThis,
+  BecauseWeWantContext,
+  AbTestImplSurpriseButton,
+  IsThisScalable,
 } from './slides/EventTracking';
 import 'prismjs/components/prism-jsx.min';
 import { Provider as AbContextProvider } from './context/AbTestContext';
@@ -110,6 +115,11 @@ export default function Presentation() {
         {HocsToRescue()}
         {ConsumerHoc()}
         {HowToUseHoc()}
+        {UseHocAbVariant()}
+        {WhyDidWeDoThis()}
+        {BecauseWeWantContext()}
+        {AbTestImplSurpriseButton()}
+        {IsThisScalable()}
       </SlideDeck>
     </AbContextProvider>
   );

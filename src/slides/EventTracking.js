@@ -1,14 +1,14 @@
 import React from 'react';
 import CodeSlide from 'spectacle-code-slide';
 import Terminal from 'spectacle-terminal';
-import { ListItem } from 'style/List';
+import { ListItem } from './style/List';
 import reactDocsContextSrc from 'img/react_on_context.png';
 import hocGithubSrc from 'img/usehoc.png';
-import { Slide, Heading, Notes } from 'spectacle';
+import { Appear, Slide, Heading, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';
-import { User } from 'style/Console';
-import { FlashyText } from 'style/Typography';
+import { User } from './style/Console';
+import { FlashyText } from './style/Typography';
 
 export function IntroEventTracking() {
   return (
@@ -299,7 +299,8 @@ export const Consumer = AbContext.Consumer;
         },
         {
           loc: [2, 3],
-          note: 'Note how we import these utilities, they are not relevant for our implementation',
+          note:
+            'Note how we import these utilities, they are not relevant for our implementation',
         },
         {
           loc: [4, 5],
@@ -509,13 +510,13 @@ export const withAbContext = (ComposedComponent) => (props) =>
         },
         {
           loc: [6, 11],
-          note: 'The API for the Consumer remains the same, except now it returns the ComposedComponent',
+          note:
+            'The API for the Consumer remains the same, except now it returns the ComposedComponent',
         },
       ]}
     />
   );
 }
-
 
 export function HowToUseHoc() {
   return (
@@ -527,8 +528,184 @@ export function HowToUseHoc() {
 
 export function UseHocAbVariant() {
   return (
-    <Slide>
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+// src/AbVariant.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withAbContext } from './context/AbTestContext';
 
+class AbVariant extends React.Component {
+  static propTypes = {
+    // These props are injected by the higher-order-component
+    assignVariant: PropTypes.func.isRequired,
+    assignedVariants: PropTypes.object.isRequired,
+    testName: PropTypes.string.isRequired,
+    variants: PropTypes.arrayOf(PropTypes.string).isRequired,
+    children: PropTypes.func,
+  };
+
+  getAssignedVariant () {
+    const { assignedVariants, testName} = this.props;
+    return assignedVariants[testName];
+  }
+  
+  componentDidMount() {
+    if (!this.getAssignedVariant()) {
+      return this.props.assignVariant(this.props.testName, this.props.variants);
+    }
+  }
+
+  render() {
+    const assignedVariant = this.getAssignedVariant();
+
+    return this.props.children(assignedVariant);
+  }
+}
+
+export default withAbContext(AbVariant);
+
+
+
+
+
+`}
+      ranges={[
+        {
+          loc: [0, 25],
+        },
+        {
+          loc: [4, 5],
+          note: 'Import the withAbContext HOC',
+        },
+        {
+          loc: [34, 35],
+          note: 'Wrap the AbVariant in a withAbContext function call',
+        },
+        {
+          loc: [7, 11],
+          note:
+            'These now get injected as props because of the higher order component',
+        },
+        {
+          loc: [16, 26],
+          note:
+            "And because they're just props, we can also use them in lifecycle methods!",
+        },
+        {
+          loc: [21, 26],
+          note:
+            "If there's no variant assigned yet, we will make sure to assign it as the component mounts.",
+        },
+      ]}
+    />
+  );
+}
+
+export function WhyDidWeDoThis() {
+  return (
+    <Slide>
+      <Heading size={3}>
+        Soo... Why did we go through all this trouble again?
+      </Heading>
+      <SurpriseButton />
     </Slide>
-  )
+  );
+}
+
+export function BecauseWeWantContext() {
+  return (
+    <Slide>
+      <Heading size={3}>
+        Because we want the <FlashyText>context</FlashyText> for tracking events
+      </Heading>
+    </Slide>
+  );
+}
+
+export function AbTestImplSurpriseButton() {
+  return (
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+// src/experiments/SurpriseButton.js
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withAbContext } from './context/AbTestContext';
+
+class SurpriseButton extends React.Component {
+  static propTypes = {
+    // Injected by withAbContext HOC
+    assignedVariants: PropTypes.object.isRequired,
+  };
+
+  ...
+
+  onClick = () => {
+    this.setState(
+      {
+        isSurprised: true,
+      },
+      () => {
+        this.timeout = setTimeout(this.hideSurprise, 2700);
+
+        const { store } = this.context;
+        const state = store.getState();
+        trackEvent('Surprise Button Clicked', {
+          slideNumber: state.route.slide,
+          ...this.props.assignedVariants,
+        });
+      },
+    );
+  };
+
+  ...
+}
+
+export default withAbContext(SurpriseButton);
+
+
+
+
+
+
+`}
+      ranges={[
+        {
+          loc: [0, 25],
+        },
+        {
+          loc: [4, 5],
+          note: 'Import the withAbContext HOC',
+        },
+        {
+          loc: [7, 11],
+          note: 'These propTypes also get injected',
+        },
+        {
+          loc: [35, 36],
+          note:
+            'Because we wrap the component with the withAbContext HOC again',
+        },
+        {
+          loc: [24, 28],
+          note: 'And we include the assignedVariants in the trackEvent call',
+        },
+      ]}
+    />
+  );
+}
+
+export function IsThisScalable() {
+  return (
+    <Slide>
+      <Heading size={3}>Is this a scalable solution?</Heading>
+      <Appear>
+        <Heading size={5}>How can we improve?</Heading>
+      </Appear>
+    </Slide>
+  );
 }

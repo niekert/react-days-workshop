@@ -1,6 +1,6 @@
 import React from 'react';
-import { ListItem } from 'style/List';
-import { User } from 'style/Console';
+import { ListItem } from './style/List';
+import { User } from './style/Console';
 import CodeSlide from 'spectacle-code-slide';
 import { Slide, Heading, Appear, Notes } from 'spectacle';
 import { ListSlide } from './Helpers';

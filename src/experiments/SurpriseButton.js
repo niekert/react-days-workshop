@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withAbContext } from '../context/AbTestContext';
 import styled from 'styled-components';
 import { trackEvent } from 'utils/events';
 import SurpriseOverlay from './SurpriseOverlay';
@@ -19,6 +20,11 @@ const StyledButton = styled.button`
 `;
 
 class SurpriseButton extends React.Component {
+  static propTypes = {
+    // Injected by withAbContext HOC
+    assignedVariants: PropTypes.object.isRequired,
+  };
+
   static contextTypes = {
     store: PropTypes.shape({
       getState: PropTypes.func,
@@ -49,6 +55,7 @@ class SurpriseButton extends React.Component {
         const state = store.getState();
         trackEvent('Surprise Button Clicked', {
           slideNumber: state.route.slide,
+          ...this.props.assignedVariants,
         });
       },
     );
@@ -66,4 +73,4 @@ class SurpriseButton extends React.Component {
   }
 }
 
-export default SurpriseButton;
+export default withAbContext(SurpriseButton);
