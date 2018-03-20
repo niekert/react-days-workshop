@@ -2,9 +2,9 @@ import React from 'react';
 import { Deck } from 'spectacle';
 import AbVariant from './AbVariant';
 import { ThemeProvider } from 'styled-components';
-import createTheme from './themes/createTheme';
-import darkThemeBase from './themes/darkTheme';
-import lightThemeBase from './themes/lightTheme';
+import createTheme from './style/themes/createTheme';
+import darkThemeBase from './style/themes/darkTheme';
+import lightThemeBase from './style/themes/lightTheme';
 
 const variants = ['darkControl', 'light'];
 const themeMap = {

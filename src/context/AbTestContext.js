@@ -4,9 +4,7 @@ import { getAssignedVariants, storeAssignedVariant } from 'utils/abTests';
 const AbContext = createContext();
 
 export class Provider extends React.Component {
-  state = {
-    assignedVariants: getAssignedVariants(),
-  };
+  state = getAssignedVariants()
 
   assignVariant = (testName, variants) => {
     const assignedVariant =
@@ -20,11 +18,9 @@ export class Provider extends React.Component {
   };
 
   render() {
-    const { assignedVariants } = this.state;
-
     return (
       <AbContext.Provider
-        value={{ assignedVariants, assignVariant: this.assignVariant }}
+        value={{ assignedVariants: this.state, assignVariant: this.assignVariant }}
       >
         {this.props.children}
       </AbContext.Provider>
@@ -33,3 +29,10 @@ export class Provider extends React.Component {
 }
 
 export const Consumer = AbContext.Consumer;
+
+export const withAbContext = (ComposedComponent) => props =>
+  <AbContext.Consumer>
+    {contextProps => (
+      <ComposedComponent {...contextProps} {...props} />
+    )}
+  </AbContext.Consumer>

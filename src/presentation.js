@@ -51,6 +51,9 @@ import {
   ButProblem,
   HowDoWeAssign,
   HocsToRescue,
+  HocContextGithub,
+  ConsumerHoc,
+  HowToUseHoc
 } from './slides/EventTracking';
 import 'prismjs/components/prism-jsx.min';
 import { Provider as AbContextProvider } from './context/AbTestContext';
@@ -103,7 +106,10 @@ export default function Presentation() {
         {ConsumerAbVariant()}
         {ButProblem()}
         {HowDoWeAssign()}
+        {HocContextGithub()}
         {HocsToRescue()}
+        {ConsumerHoc()}
+        {HowToUseHoc()}
       </SlideDeck>
     </AbContextProvider>
   );

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Consumer as AbContextConsumer } from './context/AbTestContext';
+import { withAbContext } from './context/AbTestContext';
 
 class AbVariant extends React.Component {
   static propTypes = {
@@ -9,17 +9,22 @@ class AbVariant extends React.Component {
     children: PropTypes.func,
   };
 
+  getAssignedVariant () {
+    const { assignedVariants, testName} = this.props;
+    return assignedVariants[testName];
+  }
+  
+  componentDidMount() {
+    if (!this.getAssignedVariant()) {
+      return this.props.assignVariant(this.props.testName, this.props.variants);
+    }
+  }
+
   render() {
-    const { testName } = this.props;
-    return (
-      <AbContextConsumer>
-        {({ assignedVariants }) => {
-          const assignedVariant = assignedVariants[testName];
-          return this.props.children(assignedVariant);
-        }}
-      </AbContextConsumer>
-    );
+    const assignedVariant = this.getAssignedVariant();
+
+    return this.props.children(assignedVariant);
   }
 }
 
-export default AbVariant;
+export default withAbContext(AbVariant);

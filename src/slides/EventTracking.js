@@ -3,6 +3,7 @@ import CodeSlide from 'spectacle-code-slide';
 import Terminal from 'spectacle-terminal';
 import { ListItem } from 'style/List';
 import reactDocsContextSrc from 'img/react_on_context.png';
+import hocGithubSrc from 'img/usehoc.png';
 import { Slide, Heading, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';
@@ -261,9 +262,7 @@ import { getAssignedVariants, storeAssignedVariant } from 'utils/abTests';
 const AbContext = createContext();
 
 export class Provider extends React.Component {
-  state = {
-    assignedVariants: getAssignedVariants(),
-  };
+  state = getAssignedVariants();
 
   assignVariant = (testName, variants) => {
     const assignedVariant =
@@ -277,11 +276,9 @@ export class Provider extends React.Component {
   };
 
   render() {
-    const { assignedVariants } = this.state;
-
     return (
       <AbContext.Provider
-        value={{ assignedVariants, assignVariant: this.assignVariant }}
+        value={{ assignedVariants: this.state, assignVariant: this.assignVariant }}
       >
         {this.props.children}
       </AbContext.Provider>
@@ -298,7 +295,11 @@ export const Consumer = AbContext.Consumer;
       ranges={[
         {
           loc: [1, 2],
-          note: 'React expots a new "createContext" function',
+          note: 'React exports a new "createContext" function',
+        },
+        {
+          loc: [2, 3],
+          note: 'Note how we import these utilities, they are not relevant for our implementation',
         },
         {
           loc: [4, 5],
@@ -310,28 +311,28 @@ export const Consumer = AbContext.Consumer;
             'A regular React component keeps the state of all the AB we have assigned',
         },
         {
-          loc: [7, 10],
+          loc: [7, 8],
           note:
             'getAssignedVariants() is a helper function to read everything stored in localStorage',
         },
         {
-          loc: [11, 21],
+          loc: [9, 19],
           note: 'assignVariant() looks pretty similar to what we wrote before',
         },
         {
-          loc: [22, 33],
+          loc: [20, 30],
           note: 'AbContext.Provider comes from createContext()',
         },
         {
-          loc: [27, 28],
+          loc: [23, 24],
           note: 'Notice what we pass to the value prop',
         },
         {
-          loc: [29, 30],
+          loc: [25, 26],
           note: 'Pass through any children',
         },
         {
-          loc: [35, 36],
+          loc: [31, 32],
           note: 'Notice how we also export a Consumer',
         },
       ]}
@@ -461,6 +462,10 @@ export function HowDoWeAssign() {
   );
 }
 
+export function HocContextGithub() {
+  return imageSlide({ src: hocGithubSrc });
+}
+
 export function HocsToRescue() {
   return (
     <Slide>
@@ -474,4 +479,56 @@ export function HocsToRescue() {
       </Notes>
     </Slide>
   );
+}
+
+export function ConsumerHoc() {
+  return (
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+import React, { createContext } from 'react';
+
+const AbContext  = createContext(null);
+
+export const withAbContext = (ComposedComponent) => (props) =>
+  <AbContext.Consumer>
+    {contextProps => (
+      <ComposedComponent {...contextProps} {...props} />
+    )}
+  </AbContext.Consumer>
+`}
+      ranges={[
+        {
+          loc: [0, 13],
+          note: 'We create a withAbContext HOC by exporting a function',
+        },
+        {
+          loc: [5, 6],
+          note: 'We create a withAbContext HOC by exporting a function',
+        },
+        {
+          loc: [6, 11],
+          note: 'The API for the Consumer remains the same, except now it returns the ComposedComponent',
+        },
+      ]}
+    />
+  );
+}
+
+
+export function HowToUseHoc() {
+  return (
+    <Slide>
+      <Heading size={3}>How do we use this HOC?</Heading>
+    </Slide>
+  );
+}
+
+export function UseHocAbVariant() {
+  return (
+    <Slide>
+
+    </Slide>
+  )
 }
