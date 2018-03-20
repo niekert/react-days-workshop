@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withAbContext } from '../context/AbTestContext';
+import withTrackingContext from '../hoc/withTrackingContext';
 import styled from 'styled-components';
-import { trackEvent } from 'utils/events';
 import SurpriseOverlay from './SurpriseOverlay';
 
 const StyledButton = styled.button`
@@ -21,8 +20,7 @@ const StyledButton = styled.button`
 
 class SurpriseButton extends React.Component {
   static propTypes = {
-    // Injected by withAbContext HOC
-    assignedVariants: PropTypes.object.isRequired,
+    trackEvent: PropTypes.func.isRequired,
   };
 
   static contextTypes = {
@@ -50,13 +48,7 @@ class SurpriseButton extends React.Component {
       },
       () => {
         this.timeout = setTimeout(this.hideSurprise, 2700);
-
-        const { store } = this.context;
-        const state = store.getState();
-        trackEvent('Surprise Button Clicked', {
-          slideNumber: state.route.slide,
-          ...this.props.assignedVariants,
-        });
+        this.props.trackEvent('Surprise Button Clicked');
       },
     );
   };
@@ -73,4 +65,4 @@ class SurpriseButton extends React.Component {
   }
 }
 
-export default withAbContext(SurpriseButton);
+export default withTrackingContext(SurpriseButton);

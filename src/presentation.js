@@ -59,6 +59,8 @@ import {
   BecauseWeWantContext,
   AbTestImplSurpriseButton,
   IsThisScalable,
+  ComposeWithTrackingContext,
+  Recap,
 } from './slides/EventTracking';
 import 'prismjs/components/prism-jsx.min';
 import { Provider as AbContextProvider } from './context/AbTestContext';
@@ -120,6 +122,7 @@ export default function Presentation() {
         {BecauseWeWantContext()}
         {AbTestImplSurpriseButton()}
         {IsThisScalable()}
+        {ComposeWithTrackingContext()}
       </SlideDeck>
     </AbContextProvider>
   );

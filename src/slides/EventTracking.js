@@ -709,3 +709,102 @@ export function IsThisScalable() {
     </Slide>
   );
 }
+
+export function ComposeWithTrackingContext() {
+  return (
+    <CodeSlide
+      className="codeSlide"
+      lang="jsx"
+      code={`
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withAbContext } from '../context/AbTestContext';
+import compose from '../utils/compose';
+import { trackEvent } from '../utils/events';
+
+const withTrackingContext = ComposedComponent =>
+  class TrackingContext extends React.Component {
+    static contextTypes = {
+      assignedVariants: PropTypes.object,
+      store: PropTypes.shape({
+        getState: PropTypes.func,
+      }),
+    };
+
+    trackEvent = (eventName, eventProps) => {
+      const { assignedVariants } = this.props;
+      const { store } = this.context;
+      const storeState = store.getState();
+
+      trackEvent(eventName, {
+        slideNumber: storeState.route.slide,
+        ...assignedVariants,
+        ...eventProps,
+      });
+    };
+
+    render() {
+      return <ComposedComponent trackEvent={this.trackEvent} {...this.props} />;
+    }
+  };
+
+export default compose(withAbContext, withTrackingContext);
+      
+
+
+
+
+
+
+`}
+      ranges={[
+        {
+          loc: [0, 25],
+        },
+        {
+          loc: [7, 8],
+          note: 'We create another HOC',
+        },
+        {
+          loc: [9, 14],
+          note:
+            'We include the contextType for the Redux store, what we had in SurpriseButton before',
+        },
+        {
+          loc: [16, 27],
+          note:
+            'The trackEvent function already includes AB test and slide number context for',
+        },
+        {
+          loc: [29, 30],
+          note:
+            'Pass the trackEvent function as a prop to the wrapped component',
+        },
+        {
+          loc: [33, 34],
+          note:
+            'We make use of the withAbContext HOC we made earlier to get the AB test context',
+        },
+      ]}
+    />
+  );
+}
+
+export function Recap() {
+  return (
+    <Slide>
+      <ListSlide title="Recap">
+        <ListItem>
+          Try to include as much context as possible when tracking events
+        </ListItem>
+        <ListItem>
+          The new Context API is very suited for these types of things
+        </ListItem>
+        <ListItem>
+          You can use React's powerful composition model to get you the right
+          data
+        </ListItem>
+      </ListSlide>
+    </Slide>
+  );
+}

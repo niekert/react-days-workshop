@@ -29,7 +29,7 @@ export function AboutMe() {
     <Slide transition={['slide']} maxWidth={1900}>
       <Heading lineHeight={2}>
         <span role="img" aria-label="waving">
-          🙋�
+          🙋🏻‍♂️
         </span>{' '}
         I'm Niek
       </Heading>
@@ -54,8 +54,8 @@ export function Intro() {
     <Slide fill>
       <Heading margin="0 0 100px 0">Before we start</Heading>
       <Heading size={5} textColor="primaryText">
-        Follow along with the slides <br />
-        ## TODO: Link
+        Follow along with the slides <br /> <br />
+        http://react-days-workshop.surge.sh
       </Heading>
     </Slide>
   );
