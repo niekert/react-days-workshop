@@ -1,5 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { trackEvent } from 'utils/events';
 import SurpriseOverlay from './SurpriseOverlay';
 
 const StyledButton = styled.button`
@@ -17,6 +19,12 @@ const StyledButton = styled.button`
 `;
 
 class SurpriseButton extends React.Component {
+  static contextTypes = {
+    store: PropTypes.shape({
+      getState: PropTypes.func,
+    }),
+  };
+
   state = {
     isSurprised: false,
   };
@@ -35,6 +43,13 @@ class SurpriseButton extends React.Component {
         isSurprised: true,
       },
       () => {
+        const { store } = this.context;
+        const state = store.getState();
+
+        trackEvent('Surprise Button Clicked Live', {
+          slideNumber: state.route.slide,
+        });
+
         this.timeout = setTimeout(this.hideSurprise, 2700);
       },
     );
