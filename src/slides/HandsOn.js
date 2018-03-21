@@ -75,7 +75,7 @@ export function WebPowers() {
           <ListItem>Sharing tools and code has never been easier</ListItem>
         </Appear>
         <Appear>
-          <ListItem>Take this presentation as an example</ListItem>
+          <ListItem>Take this pesentation as an example</ListItem>
         </Appear>
         <Appear>
           <ListItem>
