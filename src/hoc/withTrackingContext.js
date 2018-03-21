@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withAbContext } from '../context/AbTestContext';
-import compose from '../utils/compose';
 import { trackEvent } from '../utils/events';
 
 const withTrackingContext = ComposedComponent =>

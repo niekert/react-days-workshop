@@ -810,7 +810,6 @@ export function ComposeWithTrackingContext() {
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withAbContext } from '../context/AbTestContext';
-import compose from '../utils/compose';
 import { trackEvent } from '../utils/events';
 
 const withTrackingContext = ComposedComponent =>
@@ -839,7 +838,8 @@ const withTrackingContext = ComposedComponent =>
     }
   };
 
-export default compose(withAbContext, withTrackingContext);
+export default (ComposedComponent) => 
+  withAbContext(withTrackingContext(ComposedComponent));
       
 
 
@@ -867,12 +867,12 @@ export default compose(withAbContext, withTrackingContext);
             'The trackEvent function already includes AB test and slide number context for',
         },
         {
-          loc: [29, 30],
+          loc: [28, 29],
           note:
             'Pass the trackEvent function as a prop to the wrapped component',
         },
         {
-          loc: [33, 34],
+          loc: [32, 34],
           note:
             'We make use of the withAbContext HOC we made earlier to get the AB test context',
         },
