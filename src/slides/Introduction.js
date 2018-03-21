@@ -221,7 +221,7 @@ export function HowToDeal() {
 export function BuildShipCheckRepeat() {
   return (
     <Slide transition={['fade']}>
-      <ListSlide title="What's the quickest way to find out?">
+      <ListSlide title="How do you find out if something works?">
         <ListItem>
           <FlashyText>Build</FlashyText>
         </ListItem>
