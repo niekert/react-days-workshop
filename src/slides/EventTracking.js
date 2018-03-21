@@ -8,12 +8,28 @@ import { Appear, Slide, Heading, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';
 import { User } from './style/Console';
+import preloadImage from 'utils/preloadImage';
 import { FlashyText } from './style/Typography';
+
+preloadImage(reactDocsContextSrc);
+preloadImage(hocGithubSrc);
 
 export function IntroEventTracking() {
   return (
     <Slide>
       <Heading size={3}>An introduction to event tracking</Heading>
+      <Notes>
+        <ul>
+          <li>
+            Let's start by taking a look at event tracking. Also for this, there
+            are many tools available. But we will be using mixpanel
+          </li>
+          <li>
+            Show a Mixpanel demo, and encourage users to sign up for their own
+            account for the rest of the workshop
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -60,6 +76,11 @@ info All dependencies
 ✨  Done in 6.58s.`,
         ]}
       />
+      <Notes>
+        <ul>
+          <li>TAKE A LOOK AT package on NPM website</li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -81,7 +102,7 @@ export function trackEvent(eventName, properties) {
 `}
       ranges={[
         { loc: [1, 10], note: 'Create file src/utils/events.js' },
-        { loc: [4, 5], note: 'Either use your own token, or use: TODO' },
+        { loc: [4, 5], note: 'Either use your own token, or use mine.' },
       ]}
     />
   );
@@ -92,6 +113,20 @@ export function TrackingSurpriseButton() {
     <Slide>
       <Heading size={3}>Tracking events for the surprise button</Heading>
       <SurpriseButton />
+      <Notes>
+        <ul>
+          <li>There is this surprise button in our presentation</li>
+          <li>It does look quite a bit different on both the themes</li>
+          <li>It's a lot harder to see on the light theme.</li>
+          <li>
+            Do we actually want people to click it, or do we want it to be semi
+            hidden?
+          </li>
+          <li>
+            We will add events to figure out how many times it was clicked.
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -169,7 +204,8 @@ export function HowWeIncludeSlideNumber() {
         ASK AUDIENCE
         <ul>
           <li>URL?</li>
-          <li>Let's look at React devtools</li>
+          <li>Open up React devtools and take a look at the props / context</li>
+          <li>Show how you can do store.getState()</li>
         </ul>
       </Notes>
     </Slide>
@@ -239,13 +275,68 @@ export function ReactDocsContext() {
   });
 }
 
+export function WhatElseDoWeNeed() {
+  return (
+    <Slide>
+      <Heading size={3}>Including the AB test assignment</Heading>
+      <Notes>
+        <ul>
+          <li>
+            We can now see on which slide the surprise button gets clicked
+          </li>
+          <li>But we still don't know which theme the user was on</li>
+        </ul>
+      </Notes>
+    </Slide>
+  );
+}
+
 export function UsingContextForAbTest() {
   return (
     <Slide transition={['spin']}>
       <Heading size={3}>
         Using the <FlashyText>new</FlashyText> Context API
       </Heading>
-      <Notes>Intro for context API</Notes>
+      <Notes>
+        <ul>
+          <li>
+            We just saw the mention in the React context docs about a new
+            Context API becoming avilable
+          </li>
+          <li>
+            That API is already available in a new version of React, React 16.3
+          </li>
+          <li>Let's use the alpha!</li>
+        </ul>
+      </Notes>
+    </Slide>
+  );
+}
+
+export function UpdateReactAlpha() {
+  return (
+    <Slide>
+      <Terminal
+        title="react-days-workshop"
+        output={[
+          <User>
+            yarn add react@16.3.0-alpha.2 <br /> react-dom@16.3.0-alpha.2
+          </User>,
+          `yarn add v1.5.1
+[1/4] 🔍  Resolving packages...
+[2/4] 🚚  Fetching packages...
+[3/4] 🔗  Linking dependencies...
+[4/4] 📃  Building fresh packages...`,
+          `success Saved lockfile.
+success Saved 2 new dependencies.
+✨  Done in 6.58s.`,
+        ]}
+      />
+      <Notes>
+        <ul>
+          <li>TAKE A LOOK AT package on NPM website</li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -802,9 +893,78 @@ export function Recap() {
         </ListItem>
         <ListItem>
           You can use React's powerful composition model to get you the right
-          data
+          data where you need it
         </ListItem>
       </ListSlide>
+      <Notes>
+        <ul>
+          <li>
+            As we've seen in MixPanel you can combine data with all the
+            different properties that you send to a an event. Because of this it
+            is useful to include as much context as possible
+          </li>
+          <li>
+            The new context api is great for this, it's kinda in the word
+            already. You don't have to make your components dirty
+          </li>
+          <li>
+            The react composition model is really powerful for combining the
+            data you need
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+  );
+}
+
+export function LastThingsToConsider() {
+  return (
+    <Slide>
+      <ListSlide title="Final notes">
+        <ListItem>Be prepared to be disappointed by the data</ListItem>
+        <Appear>
+          <ListItem>
+            Triple check if the data you're tracking is correct
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>
+            Be open & honest about mistakes or bugs in the tracking data
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Learn by doing</ListItem>
+        </Appear>
+      </ListSlide>
+      <Notes>
+        I want to end off with some final notes about things I've personally
+        encountered while using this method in products i've worked on.
+        <ul>
+          <li>
+            Be perpared to be disappointed by data. You may have worked on a new
+            feature for a while, and after shipping it, you realise it is not
+            being used, or is being used less than the previous variant. This
+            can be tough
+          </li>
+          <li>
+            Nothing's more important than sending the correct data, because if
+            you're looking at data that is incorrect it is actiually quite
+            meaningless
+          </li>
+          <li>
+            If mistakes are made in the data tracking (trust me, this will
+            happen), the best thing to do is to be open & honest about it.
+            Rather than keeping things for yourself because you're afraid you
+            might ruin an AB test
+          </li>
+          <li>
+            Learn by doing. AB Testing and UI tracking is a very broad subject
+            where you can do a lot of things good or bad. The best way to learn
+            what works for your company is by simply doing it, and finding out
+            what works and what doesn't.
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }

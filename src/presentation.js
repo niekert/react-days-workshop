@@ -32,6 +32,8 @@ import {
   NowWhat,
   UsingAbVariant,
   AbVariantImpl,
+  AbTestKeepInMind,
+  BasicImplAb,
 } from './slides/AbTests';
 import {
   IntroEventTracking,
@@ -45,9 +47,11 @@ import {
   UsingContextForAbTest,
   SlideNumberContextImpl,
   ReactDocsContext,
+  WhatElseDoWeNeed,
   UsingProvider,
   ImplementNewContext,
   ConsumerAbVariant,
+  UpdateReactAlpha,
   ButProblem,
   HowDoWeAssign,
   HocsToRescue,
@@ -61,6 +65,7 @@ import {
   IsThisScalable,
   ComposeWithTrackingContext,
   Recap,
+  LastThingsToConsider,
 } from './slides/EventTracking';
 import 'prismjs/components/prism-jsx.min';
 import { Provider as AbContextProvider } from './context/AbTestContext';
@@ -88,9 +93,11 @@ export default function Presentation() {
         {Surge()}
         {ChangingProducts()}
         {AbTestIntro()}
+        {AbTestKeepInMind()}
         {ExampleBooking()}
         {GoogleControl()}
         {GoogleVariant()}
+        {BasicImplAb()}
         {AbTestCode()}
         {IssuesWithApproach()}
         {ImplementAb()}
@@ -107,7 +114,9 @@ export default function Presentation() {
         {HowWeIncludeSlideNumber()}
         {SlideNumberContextImpl()}
         {ReactDocsContext()}
+        {WhatElseDoWeNeed()}
         {UsingContextForAbTest()}
+        {UpdateReactAlpha()}
         {ImplementNewContext()}
         {UsingProvider()}
         {ConsumerAbVariant()}
@@ -123,6 +132,8 @@ export default function Presentation() {
         {AbTestImplSurpriseButton()}
         {IsThisScalable()}
         {ComposeWithTrackingContext()}
+        {Recap()}
+        {LastThingsToConsider()}
       </SlideDeck>
     </AbContextProvider>
   );

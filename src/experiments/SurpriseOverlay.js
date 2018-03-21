@@ -2,6 +2,9 @@ import React from 'react';
 import doggoSurpriseSrc from 'img/doggo_surprise.gif';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import preloadImage from 'utils/preloadImage';
+
+preloadImage(doggoSurpriseSrc);
 
 const Wrapper = styled.div`
   display: flex;

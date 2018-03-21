@@ -20,6 +20,18 @@ export function Welcome() {
       <Heading size={5} textColor="primaryText">
         Niek Kruse
       </Heading>
+      <Notes>
+        <ul>
+          <li>
+            Last talk of the conference, hope y'all had fun and still have
+            energy for this one
+          </li>{' '}
+          <li>
+            - How do you ship products quickly and learn from what you've
+            shipped
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -42,9 +54,21 @@ export function AboutMe() {
           </ListItem>
           <ListItem>Frontend Engineer at MessageBird</ListItem>
           <ListItem>https://github.com/niekert</ListItem>
-          <ListItem>I like buildig things in React</ListItem>
+          <ListItem>I like building things in React</ListItem>
         </List>
       </Center>
+      <Notes>
+        <ul>
+          <li>
+            - This is my first ever work shop, tried my best in terms of timing
+            and everyhting but please cut some slack{' '}
+          </li>
+          <li>
+            - Feel free to interrupt me or ask questions if something is not
+            clear
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -55,8 +79,15 @@ export function Intro() {
       <Heading margin="0 0 100px 0">Before we start</Heading>
       <Heading size={5} textColor="primaryText">
         Follow along with the slides <br /> <br />
-        http://react-days-workshop.surge.sh
+        https://react-days-workshop.surge.sh
       </Heading>
+      <Notes>
+        <ul>
+          <li>It'a a good idea to follow along with the code samples</li>
+          <li>Easier to read and ask questions</li>
+          <li>Please interrupt me if you have questions</li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -65,7 +96,7 @@ export function HowDoWeBuild() {
   return (
     <Slide>
       <Heading size={3} textColor="primaryText">
-        How do you build a product?
+        What's your (company's) process for building a product?
       </Heading>
       <Notes>
         There is not one answer to this question. If I ask everyone in the
@@ -75,6 +106,9 @@ export function HowDoWeBuild() {
           <li>Do you use sprints?</li>
           <li>What about a product manager?</li>
           <li>When does it become your dev's task?</li>
+          <li>When do you ship?</li>
+          <li>How do you know that what you shipped performs?</li>
+          <li>Do you have QA?</li>
         </ul>
       </Notes>
     </Slide>
@@ -125,6 +159,10 @@ export function WillThisWork() {
           You won't know until it's actually in use
         </Text>
       </Appear>
+      <Notes>
+        As good as an idea might sound, you never really know if something
+        performs in the way you expect it to perform
+      </Notes>
     </Slide>
   );
 }
@@ -132,7 +170,7 @@ export function WillThisWork() {
 export function HowToDeal() {
   return (
     <Slide transition={['fade']}>
-      <ListSlide title="What's the quickest way to find out?">
+      <ListSlide title="How do you find out if something works?">
         <Appear>
           <ListItem>
             <FlashyText>Build</FlashyText> something that works first
@@ -155,6 +193,27 @@ export function HowToDeal() {
           </ListItem>
         </Appear>
       </ListSlide>
+      <Notes>
+        <ul>
+          <li>
+            Building something that works before starting with optimizations.
+            Look at packages and improvements. <br />
+            Don't prematurely optimize, or work on support for IE if you're not
+            even sure if something works
+          </li>
+          <li>
+            Ship a first version that you think is acceptable for your clients
+            or users. This is up to your company to decide
+          </li>
+          <li>
+            Check if what you're building / you've built is actually performing
+            in the way you want it to perform <br />
+            In this workshop we'll take a closer look at the things we can use
+            for this
+          </li>
+          <li>Learn from your data.</li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }

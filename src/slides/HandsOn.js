@@ -42,12 +42,24 @@ export function Agenda() {
           <ListItem>Implementing an AB test</ListItem>
         </Appear>
         <Appear>
-          <ListItem>A look at some real data</ListItem>
+          <ListItem>A look at some real product tracking data</ListItem>
         </Appear>
         <Appear>
           <ListItem>Tracking a user's behavior in your product</ListItem>
         </Appear>
       </ListSlide>
+      <Notes>
+        <ul>
+          <li>
+            We'll start of by taking a look at why the web is such a suitable
+            platform for this type of work, quick iteration.
+          </li>
+          <li>
+            We will continue with an introduction to AB testing, things to keep
+            in mind, and a simple AB test implementation in a React app
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }

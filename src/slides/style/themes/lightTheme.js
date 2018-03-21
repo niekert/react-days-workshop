@@ -3,6 +3,7 @@ const colors = {
   secondary: '#050A15',
   primaryText: '#050A15',
   cta: '#F0CBCA',
+  quarternary: '#050A15',
   flashyText: '#ff8c8c',
   ctaText: '#fff',
   // arrays can be used for scales of colors

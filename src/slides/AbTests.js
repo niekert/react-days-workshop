@@ -3,10 +3,16 @@ import bookingAb from 'img/booking.jpg';
 import googleControl from 'img/googleold.png';
 import googleNew from 'img/googlenew.png';
 import CodeSlide from 'spectacle-code-slide';
+import preloadImage from 'utils/preloadImage';
 import { ListItem } from './style/List';
+import { FlashyText } from './style/Typography';
 import { Slide, Heading, Appear, Text, Notes } from 'spectacle';
 import SurpriseButton from 'experiments/SurpriseButton';
 import { ListSlide, imageSlide } from './Helpers';
+
+preloadImage(bookingAb);
+preloadImage(googleControl);
+preloadImage(googleNew);
 
 export function ChangingProducts() {
   return (
@@ -31,6 +37,70 @@ export function AbTestIntro() {
         <ListItem>Measure against a current version (Control)</ListItem>
         <SurpriseButton />
       </ListSlide>
+      <Notes>
+        <ul>
+          <li>Ab Tests are a commonly used technique in many tech companies</li>
+          <li>The goal is to not disrupt the user experience</li>
+          <li>
+            You want to try to find out what version of your test (version A or
+            version B works best)
+          </li>
+          <li>
+            It's important that you measure against a current version to compare
+            with
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+  );
+}
+
+export function AbTestKeepInMind() {
+  return (
+    <Slide>
+      <ListSlide title="AB Testing challenges">
+        <ListItem>
+          What do you <FlashyText>Actually</FlashyText> want to measure
+        </ListItem>
+        <Appear>
+          <ListItem>Avoiding disruptance of the user experience</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>When can a test be considered done?</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>Which tools do do you use for this?</ListItem>
+        </Appear>
+      </ListSlide>
+      <Notes>
+        <ul>
+          <li>
+            The most important thing to do before starting with an AB test, is
+            deciding which metrics you want to measure against.
+          </li>
+          <li>Do you want to improve conversion?</li>
+          <li>Do you want people to stick around on your page longer? etc.</li>
+
+          <li>
+            Make sure sure AB tests are persisted for users so they do not see
+            different versions of an experiment all the time.
+          </li>
+
+          <li>
+            With AB tests it's difficult to tell when a test can be considered
+            done. It depends on the type of test and also depends on how much
+            data you have gathered. Typically AB tests run anywhere from between
+            2 weeks to 9 months
+          </li>
+
+          <li>
+            There are a lot of AB testing tools for specifially out there. How
+            do you know which one is right for you?$ Well.. Actually,
+            implementing a basic AB testing system in a React app is not very
+            difficult.
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -79,6 +149,16 @@ function ColoredLink({ children, href }) {
   );
 }
 
+export function BasicImplAb() {
+  return (
+    <Slide>
+      <Heading size={3} textColor="primaryText">
+        A basic implementation
+      </Heading>
+    </Slide>
+  );
+}
+
 export function AbTestComponents() {
   return (
     <CodeSlide
@@ -119,8 +199,8 @@ export function ImplementAb() {
   return (
     <Slide>
       <ListSlide title="Lets implement an AB test">
-        <ListItem>Go to your code editor</ListItem>
-        <ListItem>Open src/SlideDeck.js</ListItem>
+        <ListItem>Time to open up your editors!</ListItem>
+        <ListItem>Open up src/SlideDeck.js</ListItem>
       </ListSlide>
       <Notes>
         <ul>
@@ -225,7 +305,9 @@ export function NowWhat() {
       <Notes>
         No, we don't really have anything specific we want to measure here, and
         the AB test spans the entire application, making it very broad.
-        <ul>What type of tracking is interesting?</ul>
+        <ul>
+          <li>ASK AUDIENCE: What tracking could be interesting here?</li>
+        </ul>
       </Notes>
     </Slide>
   );
