@@ -15,7 +15,7 @@ export function LetsStart() {
       <Terminal
         title="react-days-workshop"
         output={[
-          <User>
+          <User path="$ ~">
             git clone https://github.com/niekert/react-days-workshop.git
           </User>,
           <User>cd react-days-workshop</User>,
@@ -29,6 +29,16 @@ export function LetsStart() {
           </div>,
         ]}
       />
+
+      <Notes>
+        <ul>
+          <li>Wait until everyone has yarn running, ask for this</li>
+          <li>
+            Tell audience that there will be a moment to check if everything
+            works later on
+          </li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -85,7 +95,16 @@ export function WebPowers() {
           </ListItem>
         </Appear>
       </ListSlide>
-      <Notes>Do a demo, where we bugfix the typo in the presentation</Notes>
+      <Notes>
+        <ul>
+          <li>
+            People like to hate on NPM. But in reality we actually have the
+            biggest ecosystem of re-usable code and we should make use of that.
+          </li>
+          <li>Obviously there's a</li>
+        </ul>
+        Do a demo, where we bugfix the typo in the presentation
+      </Notes>
     </Slide>
   );
 }
@@ -164,7 +183,7 @@ Welcome to Surge! (surge.sh)
           email:
           password:`,
           `
-   Running as niekkruse70@gmail.com (Student)
+   Running as ****
 
         project: ./build
          domain: react-days-workshop.surge.sh

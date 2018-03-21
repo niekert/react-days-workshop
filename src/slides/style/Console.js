@@ -5,10 +5,10 @@ export const Username = styled.span`
   color: #b9f9ea;
 `;
 
-export function User({ children }) {
+export function User({ path = '$ react-days-workshop:', children }) {
   return (
     <span>
-      <Username>$ react-days-workshop: </Username>
+      <Username>{`${path} `}</Username>
       {children}
     </span>
   );

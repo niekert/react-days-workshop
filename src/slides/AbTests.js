@@ -153,7 +153,7 @@ export function BasicImplAb() {
   return (
     <Slide>
       <Heading size={3} textColor="primaryText">
-        A basic implementation
+        A basic AB Test implementation in React
       </Heading>
     </Slide>
   );
@@ -180,7 +180,7 @@ function ColoredLink({ children, href }) {
   return <a href={href} style={{ color: assignedVariant }}>{children}</a>
 }
 `}
-      ranges={[{ loc: [1, 14] }, { loc: [21, 28] }]}
+      ranges={[{ loc: [0, Infinity] }, { loc: [1, 14] }, { loc: [21, 28] }]}
     />
   );
 }
@@ -191,6 +191,12 @@ export function IssuesWithApproach() {
       <Heading size={3} textColor="primaryText">
         What are the issues with this code?
       </Heading>
+      <Notes>
+        <ul>
+          <li>AB test assignment are not saved</li>
+          <li>The assignment could change with each re-render</li>
+        </ul>
+      </Notes>
     </Slide>
   );
 }
@@ -198,7 +204,7 @@ export function IssuesWithApproach() {
 export function ImplementAb() {
   return (
     <Slide>
-      <ListSlide title="Lets implement an AB test">
+      <ListSlide title="Let's implement an AB test">
         <ListItem>Time to open up your editors!</ListItem>
         <ListItem>Open up src/SlideDeck.js</ListItem>
       </ListSlide>

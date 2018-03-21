@@ -54,6 +54,7 @@ export function AboutMe() {
           </ListItem>
           <ListItem>Frontend Engineer at MessageBird</ListItem>
           <ListItem>https://github.com/niekert</ListItem>
+          <ListItem>niekkruse70@gmail.com</ListItem>
           <ListItem>I like building things in React</ListItem>
         </List>
       </Center>
@@ -161,7 +162,13 @@ export function WillThisWork() {
       </Appear>
       <Notes>
         As good as an idea might sound, you never really know if something
-        performs in the way you expect it to perform
+        performs in the way you expect it to perform.
+        <ul>
+          <li>
+            You might think that something will work, but after shipping it to
+            your users it turns out it won't
+          </li>
+        </ul>
       </Notes>
     </Slide>
   );
