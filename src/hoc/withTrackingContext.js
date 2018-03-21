@@ -18,7 +18,6 @@ const withTrackingContext = ComposedComponent =>
       const { store } = this.context;
 
       const storeState = store.getState();
-      debugger;
       trackEvent(eventName, {
         ...eventProps,
         slideNumber: storeState.route.slide,
