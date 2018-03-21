@@ -3,7 +3,7 @@ const colors = {
   secondary: '#FFF',
   primaryText: '#fff',
   tertiary: 'rgba(255, 255, 255, 0.5)',
-  quarternary: '#050A15',
+  quarternary: '#FFF',
   flashyText: '#f54e4e',
   cta: '#FFFF00',
   ctaText: '#333',
