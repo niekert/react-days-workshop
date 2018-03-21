@@ -94,9 +94,11 @@ export function EventUtils() {
 // src/utils/events.js
 import mixpanel from 'mixpanel-browser';
 
-mixpanel.init('YOUR TOKEN');
+mixpanel.init(process.env.REACT_APP_MIXPANEL_TOKEN);
 
 export function trackEvent(eventName, properties) {
+  console.log(\`EVENT: \${eventName}\`);
+  console.table(properties);
   mixpanel.track(eventName, properties);
 }     
 `}
