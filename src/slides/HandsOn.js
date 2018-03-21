@@ -15,7 +15,9 @@ export function LetsStart() {
       <Terminal
         title="react-days-workshop"
         output={[
-          <User>git clone git@github.com:niekert/react-days-workshop.git</User>,
+          <User>
+            git clone https://github.com/niekert/react-days-workshop.git
+          </User>,
           <User>cd react-days-workshop</User>,
           <User>yarn</User>,
           `[1/4] 🔍  Resolving packages...
