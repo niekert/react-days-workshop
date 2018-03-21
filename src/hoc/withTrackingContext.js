@@ -19,9 +19,9 @@ const withTrackingContext = ComposedComponent =>
 
       const storeState = store.getState();
       trackEvent(eventName, {
-        ...eventProps,
         slideNumber: storeState.route.slide,
         ...assignedVariants,
+        ...eventProps,
       });
     };
 
@@ -30,4 +30,5 @@ const withTrackingContext = ComposedComponent =>
     }
   };
 
-export default compose(withAbContext, withTrackingContext);
+export default ComposedComponent =>
+  withAbContext(withTrackingContext(ComposedComponent));
