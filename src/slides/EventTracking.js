@@ -968,3 +968,19 @@ export function LastThingsToConsider() {
     </Slide>
   );
 }
+
+export function ThankYou() {
+  return (
+    <Slide>
+      <Heading size={3}>Thank you!</Heading>
+      <Heading size={5}>Any questions?</Heading>
+      <Notes>
+        ASK AUDIENCE WHAT TO DO
+        <ul>
+          <li>URL?</li>
+          <li>Let's look at React devtools</li>
+        </ul>
+      </Notes>
+    </Slide>
+  );
+}
